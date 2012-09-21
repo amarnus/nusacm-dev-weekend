@@ -9,40 +9,39 @@
         <title>Calculator</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <!-- View templates -->
         <!-- Main Calculator wrapper -->
-    		<script type="text/x-handlebars" data-template-name="main-template">
-    		  <div id="calcMainWrapper">
-    		    <div id="calcHeader">{{view header}}</div>
-    		    <div id="calcBody">{{view body}}</div>
-    		  </div>
-    		</script>
-    		<!-- Calculator body -->
-    		<script type="text/x-handlebars" data-template-name="calc-body-template">
-    		  <ul class="calc-button-list">
-    		    {{#each button}}
-    		      <li>{{view this}}</li>
-    		    {{/each}}
-    		  </ul>
-    		</script>
-    		<!-- Calculator screen -->
-    		<script type="text/x-handlebars" data-template-name="calc-screen-template">
-    		  <div id="calcScreen" class="calc-screen">
-    		    {{val}}
-    		  </div>
-    		</script>
-    		<!-- Calculator button -->
-    		<script type="text/x-handlebars" data-template-name="calc-button-template">
-    		  <button {{bindAttr class="cssClasses"}}>
-    		    {{label}}
-    		  </button>
-    		</script>
+        <script type="text/x-handlebars" data-template-name="main-template">
+          <div id="calcMainWrapper">
+            <div id="calcHeader">{{view header}}</div>
+            <div id="calcBody">{{view body}}</div>
+          </div>
+        </script>
+        <!-- Calculator body -->
+        <script type="text/x-handlebars" data-template-name="calc-body-template">
+          <ul class="calc-button-list">
+            {{#each button}}
+              <li>{{view this}}</li>
+            {{/each}}
+          </ul>
+        </script>
+        <!-- Calculator screen -->
+        <script type="text/x-handlebars" data-template-name="calc-screen-template">
+          <div id="calcScreen" class="calc-screen">
+            {{val}}
+          </div>
+        </script>
+        <!-- Calculator button -->
+        <script type="text/x-handlebars" data-template-name="calc-button-template">
+          <button {{bindAttr class="cssClasses"}}>
+            {{label}}
+          </button>
+        </script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -56,12 +55,5 @@
         <script src="js/vendor/ember.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
     </body>
 </html>
