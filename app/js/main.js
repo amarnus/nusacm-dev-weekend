@@ -1,49 +1,57 @@
-var ENV = {
-  CP_DEFAULT_CACHEABLE: true
-};
+Calculator = (function($, em) {
+	
+	// http://stackoverflow.com/questions/9160966/is-there-an-alternate-to-metamorph-script-tags-in-ember-js
+	// http://emberjs.com/documentation/
+	var buttonLabels = [
+	  'c', '+/-', '/', 'x',
+	  '7', '8', '9', '-',
+	  '4', '5', '6', '+',
+	  '1', '2', '3', '=',
+	  '0', '.'
+	];
+	
+	var classMap = [
+	  ['clear', 'btn-action'], ['sign', 'btn-action'], ['divide', 'btn-action'], ['multiply', 'btn-action'],
+	  ['seven', 'btn-number'], ['eight', 'btn-number'], ['nine', 'btn-number'], ['subtract', 'btn-action'],
+	  ['four', 'btn-number'], ['five', 'btn-number'], ['six', 'btn-number'], ['add', 'btn-action'],
+	  ['one', 'btn-number'], ['two', 'btn-number'], ['three', 'btn-number'], ['equals', 'btn-action'],
+	  ['zero', 'btn-number'], ['decimal', 'btn-action']
+	];
+	
+	var App = em.Application.create();
 
-(function($, em) {
-	
-	// A Stack implementated as an Ember object.
-	var Stack = em.Object.extend({
-		
-		_stack: [],
-		stackLength: null,
-		
-		stackObserver: function(oldObject, key, value) {
-			console.log(key);
-			console.log(value);
-			this.set('stackLength', this.get('_stack').get('length'));
-		}.observes('_stack'),
-		
-		popElem: function() {
-			return this.get('_stack').pop();
-		},
-		
-		pushElem: function(elem) {
-			this.get('_stack').push(elem);
-		},
-		
-		dump: function() {
-			console.log(this.get('_stack'));
-		}
-		
+	App.controller = em.Object.create({
+		content: "0" 
 	});
 	
-	var CalculatorApp = em.Application.create({
-		version: '0.1',
-		ready: function() {
-			var stack = Stack.create();
-			stack.set('_stack', ['1', '2', '3', '4']);
-			var s = stack.get('_stack').push(5);
-			stack.notifyPropertyChange('_stack');
-			console.log(stack.get('_stack').get('length'));
-			// stack.pushElem('5');
-			// console.log(stack.get('stackLength'));
-			// console.log(stack.get('_stack').get('length'));
-			// stack.popElem();
-			// stack.dump();
+	App.ready = function() {
+		var renderedButtons = []; // Set of rendered buttons
+		for (var i = 0; i < buttonLabels.length; i++) {
+			classMap[i].push('calc-button');
+			renderedButtons.push(Ember.View.extend({
+				templateName: 'calc-button-template',
+				label: buttonLabels[i],
+				cssClasses: classMap[i].join(' '),
+				click: function(event) {
+					var text = $(event.target).text();
+					App.controller.set('content', text);
+				}
+			}));
 		}
-	});
+		
+		em.View.create({
+			templateName: 'main-template',
+			header: em.View.extend({
+				templateName: 'calc-screen-template',
+				valBinding: "App.controller.content"
+			}),
+			body: em.View.extend({
+				templateName: 'calc-body-template',
+				button: renderedButtons
+			})
+		}).append();
+	}
+	
+	return App;	
 	
 })(jQuery, Ember);
