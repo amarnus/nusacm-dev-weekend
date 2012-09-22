@@ -108,7 +108,7 @@ textarea {
 		width: 600px;
 		margin: 0 auto;
 		position: relative;
-		border-radius: 15px;
+		-webkit-border-radius: 15px;
 		border: 1px #999 solid;
 		border-bottom: 5px #888 solid;
 		-webkit-box-shadow: 0 0 70px 5px #CCC;
@@ -128,15 +128,13 @@ textarea {
 		font-size: 1.2em;
 		color:#3c3c3c;
 		background-color: @calcHeaderBgColor;
-		border-radius: 15px 15px 0 0;
+		-webkit-border-radius: 15px 15px 0 0;
    }
 
    #calcBody {
 		background-color: @calcBodyBgColor;
 		border-top: 1px solid white;
-		border-radius:0 0 15px 15px;
 		-webkit-border-radius:0 0 15px 15px;
-		-moz-border-radius:0 0 15px 15px;
    }
 
    ul.calc-button-list {
@@ -163,9 +161,6 @@ textarea {
 		background:url(../img/overlay.png) repeat-x center #ffcc00;
 		background-color:rgba(255,204,0,1);
 		border:1px solid #ffcc00;
-		-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;
-		border-bottom:1px solid #9f9f9f;
-		-moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
 		cursor:pointer;
 		width:100%;
 		text-transform:uppercase;
