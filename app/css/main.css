@@ -93,21 +93,41 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+   body {
 
+   }
 
+   #calcMainWrapper {
 
+   }
 
+   #calcHeader {
 
+   }
 
+   #calcBody {
 
+   }
 
+   ul.calc-button-list {
 
+   }
 
+   button.calc-button {
 
+   }
 
+   button.btn-number {
 
+   }
 
+   button.btn-action {
 
+   }
+
+   button.btn-action.equals {
+
+   }
 
 /* ==========================================================================
    Helper classes
